@@ -1,0 +1,19 @@
+n = int(input("Enter number of elements (sorted order): "))
+arr = list(map(int, input("Enter sorted elements: ").split()))
+key = int(input("Enter value to search: "))
+
+low, high = 0, n - 1
+found = False
+while low <= high:
+    mid = low + (high - low) // 2
+    if arr[mid] == key:
+        print("Element found at index", mid, "(0-based).")
+        found = True
+        break
+    elif key < arr[mid]:
+        high = mid - 1   # search left half
+    else:
+        low = mid + 1    # search right half
+
+if not found:
+    print("Element not found.")
