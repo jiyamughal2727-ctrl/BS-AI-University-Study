@@ -1,0 +1,13 @@
+n = int(input("Enter number of elements: "))
+arr = list(map(int, input("Enter elements: ").split()))
+
+for i in range(n - 1):
+    min_index = i
+    # find minimum in arr[i..n-1]
+    for j in range(i + 1, n):
+        if arr[j] < arr[min_index]:
+            min_index = j
+    # swap arr[i] with arr[min_index]
+    arr[i], arr[min_index] = arr[min_index], arr[i]
+
+print("Sorted Array:", *arr)
