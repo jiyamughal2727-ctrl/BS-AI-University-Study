@@ -1,0 +1,10 @@
+n = int(input("Enter number of elements: "))
+arr = list(map(int, input("Enter elements: ").split()))
+key = int(input("Enter value to search: "))
+
+for i in range(n):
+    if arr[i] == key:
+        print("Element found at index", i, "(0-based).")
+        break
+else:
+    print("Element not found.")
