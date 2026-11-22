@@ -1,0 +1,44 @@
+import random
+from datetime import datetime
+
+responses = {
+    "hello": ["Hello! How are you?", "Hi there! How can I help you?"],
+    "hi": ["Hi! How's it going?", "Hello!"],
+    "how are you": ["I'm doing great, thanks! How about you?", "Doing well! And you?"],
+    "name": ["My name is PyBot.", "I'm PyBot, a simple chatbot."],
+    "help": ["I can help with greetings, the time, the date, and jokes."],
+    "joke": [
+        "Why do programmers prefer dark mode? Because light attracts bugs!",
+        "A bug is just an undocumented feature.",
+    ],
+    "thanks": ["You're welcome!", "No problem!"],
+}
+
+
+def get_reply(text):
+    text = text.lower().strip()
+
+    if "time" in text:
+        return "The time is " + datetime.now().strftime("%I:%M %p")
+    if "date" in text:
+        return "Today's date is " + datetime.now().strftime("%B %d, %Y")
+
+    for key, replies in responses.items():
+        if key in text:
+            return random.choice(replies)
+
+    return "Sorry, I didn't understand that. Try typing 'help'."
+
+
+def main():
+    print("PyBot: Hello! Type something to chat. (Type 'bye' to quit)")
+    while True:
+        user = input("You: ")
+        if user.lower().strip() in ("bye", "exit", "quit"):
+            print("PyBot: Goodbye! See you soon.")
+            break
+        print("PyBot:", get_reply(user))
+
+
+if __name__ == "__main__":
+    main()
